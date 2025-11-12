@@ -209,10 +209,6 @@ namespace PackageUrl.Tests
                     Assert.Equal(caseData.ExpectedOutput.ToString(), purl2.ToString());
                     break;
 
-                case "validation":
-                    // Placeholder: add if you port validate_string() to C#
-                    break;
-
                 default:
                     throw new Exception($"Unknown test type: {caseData.TestType}");
             }
