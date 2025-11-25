@@ -1,17 +1,28 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace PackageUrl.Tests
 {
     public class PurlTestCase
     {
         public string Description { get; set; }
+
+        [JsonPropertyName("test_type")]
         public string TestType { get; set; }
+
         public object Input { get; set; }
+
+        [JsonPropertyName("expected_output")]
         public object ExpectedOutput { get; set; }
+
+        [JsonPropertyName("expected_failure")]
         public bool ExpectedFailure { get; set; }
+
+        [JsonPropertyName("test_group")]
         public string TestGroup { get; set; }
+
         public string FileName { get; set; }
     }
 
