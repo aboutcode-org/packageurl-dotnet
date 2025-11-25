@@ -102,6 +102,15 @@ namespace PackageUrl.Tests
                     Assert.Equal(exp.GetProperty("name").GetString(), p1.Name);
                     Assert.Equal(exp.GetProperty("version").GetString(), p1.Version);
                     Assert.Equal(exp.GetProperty("subpath").GetString(), p1.Subpath);
+                    if (exp.TryGetProperty("qualifiers", out var qual))
+                    {
+                        var expectedQualifiers = JsonSerializer.Deserialize<SortedDictionary<string, string>>(qual.GetRawText());
+                        Assert.Equal(expectedQualifiers, p1.Qualifiers);
+                    }
+                    else
+                    {
+                        Assert.Null(p1.Qualifiers);
+                    }
                     break;
 
                 case "roundtrip":
